@@ -10,13 +10,21 @@ import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSource
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.filter.authc.FormAuthenticationFilter;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import com.medical.filter.ShiroRealm;
 
+/**
+ * @author apple
+ * @desc shiro 登录验证和权限管理
+ */
 @Configuration
 public class ShiroConfiguration {
+
+    private static final Logger logger = LoggerFactory.getLogger(ShiroConfiguration.class);
 
     /**
      * 将自己实现的验证方式 放到容器里
@@ -37,7 +45,6 @@ public class ShiroConfiguration {
     // Filter工厂，设置对应的过滤条件和跳转条件
     @Bean
     public ShiroFilterFactoryBean shiroFilterFactoryBean(SecurityManager securityManager) {
-        System.out.println("ShiroConfiguration.shirFilter()");
         ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
 
         /**
@@ -58,17 +65,23 @@ public class ShiroConfiguration {
         // 配置退出过滤器,其中的具体的退出代码Shiro已经替我们实现了
         filterChainDefinitionMap.put("/logout", "logout");
 
-        // <!-- 过滤链定义，从上向下顺序执行，一般将 /**放在最为下边 -->:这是一个坑呢，一不小心代码就不好使了;
-        // <!-- authc:所有url都必须认证通过才可以访问; anon:所有url都都可以匿名访问-->
-        filterChainDefinitionMap.put("/**", "authc");
+        /**
+         * 过滤链定义，从上向下顺序执行，一般将 /**放在最为下边
+         * -->:这是一个坑呢，一不小心代码就不好使了;authc:所有url都必须认证通过才可以访问; anon:所有url都都可以匿名访问-->
+         */
         filterChainDefinitionMap.put("**/static/**", "anon");
-        filterChainDefinitionMap.put("**/templates", "anon");
+        filterChainDefinitionMap.put("/css/**", "anon");
+        filterChainDefinitionMap.put("/image/**", "anon");
+        filterChainDefinitionMap.put("/js/**", "anon");
+
+        filterChainDefinitionMap.put("/templates/**", "anon");
+        filterChainDefinitionMap.put("/**", "authc");
 
         // 如果不设置默认会自动寻找Web工程根目录下的"/login.jsp"页面
         shiroFilterFactoryBean.setLoginUrl("/login");
         // 登录成功后要跳转的链接
         shiroFilterFactoryBean.setSuccessUrl("/dashboard");
-        // 未授权界面;
+        // 未授权界面
         shiroFilterFactoryBean.setUnauthorizedUrl("/403");
 
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
