@@ -21,9 +21,7 @@ import com.medical.dao.AdminDao;
 @Controller
 @RequestMapping
 public class LoginController {
-
     private static final Logger logger = Logger.getLogger(LoginController.class);
-
     @Autowired
     private AdminDao admindao;
 
@@ -34,15 +32,9 @@ public class LoginController {
 
     /**
      * 登录
-     * 
-     * @param admin
-     * @param model
-     * @param httpSession
-     * @return
      */
     @PostMapping("/login")
     public String loginPost(HttpServletRequest request, Model model, Map<Object, Object> map) {
-
         // 登录失败从request中获取shiro处理的异常信息。shiroLoginFailure:就是shiro异常类的全类名.
         Object exception = request.getAttribute("shiroLoginFailure");
         String msg = "";
@@ -56,17 +48,8 @@ public class LoginController {
                 msg = "未知错误";
             }
             model.addAttribute("error", msg);
-
             return "/login";
         }
-        // Admin adminRes = admindao.findByNameAndPassword(admin);
-        // if (adminRes != null) {
-        // httpSession.setAttribute("admin", adminRes);
-        // return new ModelAndView("redirect:dashboard");
-        // } else {
-        // model.addAttribute("error", "用户名或密码错误，请重新登录！");
-        // return new ModelAndView("login");
-        // }
         return "/dashboard";
     }
 

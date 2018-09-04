@@ -20,7 +20,6 @@ import com.medical.domain.Admin;
 public class ShiroRealm extends AuthorizingRealm {
 
     private static final Logger logger = LoggerFactory.getLogger(ShiroRealm.class);
-
     @Autowired
     AdminDao adminDao;
 
@@ -37,7 +36,6 @@ public class ShiroRealm extends AuthorizingRealm {
      */
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
-        System.out.println("MyShiroRealm.doGetAuthenticationInfo()");
         if (token.getPrincipal() == null)
             return null;
         String username = token.getPrincipal().toString();
