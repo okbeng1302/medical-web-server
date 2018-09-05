@@ -5,6 +5,8 @@ import java.util.Map;
 
 import javax.servlet.Filter;
 
+import org.apache.shiro.authc.credential.CredentialsMatcher;
+import org.apache.shiro.cache.ehcache.EhCacheManager;
 import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
@@ -15,6 +17,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import com.medical.filter.RetryLimitCredentialsMatcher;
 import com.medical.filter.ShiroRealm;
 
 /**
@@ -31,7 +34,9 @@ public class ShiroConfiguration {
      */
     @Bean
     public ShiroRealm getShiroRealm() {
-        return new ShiroRealm();
+        ShiroRealm shiroRealm = new ShiroRealm();
+        shiroRealm.setCredentialsMatcher(retryLimitCredentialsMatcher());
+        return shiroRealm;
     }
 
     // 权限管理，配置主要是Realm的管理认证
@@ -69,6 +74,7 @@ public class ShiroConfiguration {
          * 过滤链定义，从上向下顺序执行，一般将 /**放在最为下边
          * -->:这是一个坑呢，一不小心代码就不好使了;authc:所有url都必须认证通过才可以访问; anon:所有url都都可以匿名访问-->
          */
+        filterChainDefinitionMap.put("/register", "anon");
         filterChainDefinitionMap.put("**/static/**", "anon");
         filterChainDefinitionMap.put("/css/**", "anon");
         filterChainDefinitionMap.put("/image/**", "anon");
@@ -94,5 +100,24 @@ public class ShiroConfiguration {
         AuthorizationAttributeSourceAdvisor authorizationAttributeSourceAdvisor = new AuthorizationAttributeSourceAdvisor();
         authorizationAttributeSourceAdvisor.setSecurityManager(securityManager);
         return authorizationAttributeSourceAdvisor;
+    }
+
+    /**
+     * 缓存管理器
+     * 
+     * @return cacheManager
+     */
+    @Bean
+    public EhCacheManager ehCacheManager() {
+        EhCacheManager cacheManager = new EhCacheManager();
+        cacheManager.setCacheManagerConfigFile("classpath:ehcache.xml");
+        return cacheManager;
+    }
+
+    @Bean
+    public CredentialsMatcher retryLimitCredentialsMatcher() {
+        RetryLimitCredentialsMatcher retryLimitCredentialsMatcher = new RetryLimitCredentialsMatcher(ehCacheManager());
+        retryLimitCredentialsMatcher.setMaxRetryNum(5);
+        return retryLimitCredentialsMatcher;
     }
 }

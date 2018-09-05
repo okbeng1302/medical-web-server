@@ -5,6 +5,8 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.log4j.Logger;
+import org.apache.shiro.authc.AuthenticationException;
+import org.apache.shiro.authc.ExcessiveAttemptsException;
 import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,12 +40,15 @@ public class LoginController {
         // 登录失败从request中获取shiro处理的异常信息。shiroLoginFailure:就是shiro异常类的全类名.
         Object exception = request.getAttribute("shiroLoginFailure");
         String msg = "";
-        logger.info(UnknownAccountException.class.getName());
         if (exception != null) {
             if (StringUtils.equals(UnknownAccountException.class.getName(), exception)) {
                 msg = "账号不存在";
             } else if (StringUtils.equals(IncorrectCredentialsException.class.getName(), exception)) {
                 msg = "密码不正确";
+            } else if (StringUtils.equals(AuthenticationException.class.getName(), exception)) {
+                msg = "账户或密码不对";
+            } else if (StringUtils.equals(ExcessiveAttemptsException.class.getName(), exception)) {
+                msg = "登录超过5次";
             } else {
                 msg = "未知错误";
             }

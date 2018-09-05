@@ -44,10 +44,7 @@ public class ShiroRealm extends AuthorizingRealm {
         if (user == null)
             return null;
         else {
-            logger.info("=== getName() ===" + getName());
             return new SimpleAuthenticationInfo(username, user.getPassword(), getName());
         }
-
     }
-
 }
