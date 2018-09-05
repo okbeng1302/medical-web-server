@@ -11,8 +11,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.medical.dao.AdminDao;
-import com.medical.domain.Admin;
+import com.medical.dao.UserDao;
+import com.medical.domain.User;
 
 /**
  * @author apple
@@ -21,7 +21,7 @@ public class ShiroRealm extends AuthorizingRealm {
 
     private static final Logger logger = LoggerFactory.getLogger(ShiroRealm.class);
     @Autowired
-    AdminDao adminDao;
+    UserDao userDao;
 
     /**
      * 授权
@@ -40,12 +40,12 @@ public class ShiroRealm extends AuthorizingRealm {
             return null;
         String username = token.getPrincipal().toString();
         logger.info("用户:" + username + " 正在登录...");
-        Admin admin = adminDao.findAdminByName(username);
-        if (admin == null)
+        User user = userDao.findAdminByName(username);
+        if (user == null)
             return null;
         else {
             logger.info("=== getName() ===" + getName());
-            return new SimpleAuthenticationInfo(username, admin.getPassword(), getName());
+            return new SimpleAuthenticationInfo(username, user.getPassword(), getName());
         }
 
     }

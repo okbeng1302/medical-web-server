@@ -16,14 +16,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.thymeleaf.util.StringUtils;
 
-import com.medical.dao.AdminDao;
+import com.medical.dao.UserDao;
 
 @Controller
 @RequestMapping
 public class LoginController {
     private static final Logger logger = Logger.getLogger(LoginController.class);
     @Autowired
-    private AdminDao admindao;
+    private UserDao userdao;
 
     @GetMapping("/login")
     public ModelAndView page1() {
