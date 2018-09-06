@@ -4,236 +4,234 @@ import java.util.Date;
 
 public class Patient extends BaseObject {
 
-	private Integer id;
-	
-	private String uuid;
-	
-	private String username;
-	
-	private String sex;
+    private Integer id;
 
-	private Integer age;
-	
-	private Date birthday;
-	
-	private String phonenum;
-	
-	private String cid;
-	
-	private String wechatnum;
-	
-	private String origin; // 民族
-	
-	private String profession; // 职业
-	
-	private String address;
-	
-	private Integer height;
-	
-	private Integer weight;
-	
-	private String flood; // 血型
-	
-	private String menses; // 月经史
-	
-	private String person; // 个人史
-	
-	private String birthis; // 生育史
-	
-	private String family; // 家族史
-	
-	private String allergy; // 过敏史
-	
-	private Date createtime; // 建立时间
-	
-	private String state; // 病人状态
+    private String uuid;
 
-	private String lastcase; // 最新一次病症
-	
-	
-	public String getLastcase() {
-		return lastcase;
-	}
+    private String username;
 
-	public void setLastcase(String lastcase) {
-		this.lastcase = lastcase;
-	}
+    private String sex;
 
-	public String getUuid() {
-		return uuid;
-	}
+    private Integer age;
 
-	public void setUuid(String uuid) {
-		this.uuid = uuid;
-	}
+    private Date birthday;
 
-	public String getSex() {
-		return sex;
-	}
+    private String phonenum;
 
-	public void setSex(String sex) {
-		this.sex = sex;
-	}
+    private String cid;
 
-	public Date getCreatetime() {
-		return createtime;
-	}
+    private String wechatnum;
 
-	public void setCreatetime(Date createtime) {
-		this.createtime = createtime;
-	}
+    private String origin; // 民族
 
-	public Integer getId() {
-		return id;
-	}
+    private String profession; // 职业
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    private String address;
 
-	public String getUsername() {
-		return username;
-	}
+    private Integer height;
 
-	public void setUsername(String username) {
-		this.username = username;
-	}
+    private Integer weight;
 
-	public Date getBirthday() {
-		return birthday;
-	}
+    private String flood; // 血型
 
-	public void setBirthday(Date birthday) {
-		this.birthday = birthday;
-	}
+    private String menses; // 月经史
 
-	public String getPhonenum() {
-		return phonenum;
-	}
+    private String person; // 个人史
 
-	public void setPhonenum(String phonenum) {
-		this.phonenum = phonenum;
-	}
+    private String birthis; // 生育史
 
-	public String getCid() {
-		return cid;
-	}
+    private String family; // 家族史
 
-	public void setCid(String cid) {
-		this.cid = cid;
-	}
+    private String allergy; // 过敏史
 
-	public String getWechatnum() {
-		return wechatnum;
-	}
+    private Date createtime; // 建立时间
 
-	public void setWechatnum(String wechatnum) {
-		this.wechatnum = wechatnum;
-	}
+    private String state; // 病人状态
 
-	public String getOrigin() {
-		return origin;
-	}
+    private String lastcase; // 最新一次病症
 
-	public void setOrigin(String origin) {
-		this.origin = origin;
-	}
+    public String getLastcase() {
+        return lastcase;
+    }
 
-	public String getProfession() {
-		return profession;
-	}
+    public void setLastcase(String lastcase) {
+        this.lastcase = lastcase;
+    }
 
-	public void setProfession(String profession) {
-		this.profession = profession;
-	}
+    public String getUuid() {
+        return uuid;
+    }
 
-	public String getAddress() {
-		return address;
-	}
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
+    }
 
-	public void setAddress(String address) {
-		this.address = address;
-	}
+    public String getSex() {
+        return sex;
+    }
 
-	public Integer getHeight() {
-		return height;
-	}
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
 
-	public void setHeight(Integer height) {
-		this.height = height;
-	}
+    public Date getCreatetime() {
+        return createtime;
+    }
 
-	public Integer getWeight() {
-		return weight;
-	}
+    public void setCreatetime(Date createtime) {
+        this.createtime = createtime;
+    }
 
-	public void setWeight(Integer weight) {
-		this.weight = weight;
-	}
+    public Integer getId() {
+        return id;
+    }
 
-	public String getFlood() {
-		return flood;
-	}
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-	public void setFlood(String flood) {
-		this.flood = flood;
-	}
+    public String getUsername() {
+        return username;
+    }
 
-	public String getMenses() {
-		return menses;
-	}
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
-	public void setMenses(String menses) {
-		this.menses = menses;
-	}
+    public Date getBirthday() {
+        return birthday;
+    }
 
-	public String getPerson() {
-		return person;
-	}
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
+    }
 
-	public void setPerson(String person) {
-		this.person = person;
-	}
+    public String getPhonenum() {
+        return phonenum;
+    }
 
-	public String getBirthis() {
-		return birthis;
-	}
+    public void setPhonenum(String phonenum) {
+        this.phonenum = phonenum;
+    }
 
-	public void setBirthis(String birthis) {
-		this.birthis = birthis;
-	}
+    public String getCid() {
+        return cid;
+    }
 
-	public String getFamily() {
-		return family;
-	}
+    public void setCid(String cid) {
+        this.cid = cid;
+    }
 
-	public void setFamily(String family) {
-		this.family = family;
-	}
+    public String getWechatnum() {
+        return wechatnum;
+    }
 
-	public String getAllergy() {
-		return allergy;
-	}
+    public void setWechatnum(String wechatnum) {
+        this.wechatnum = wechatnum;
+    }
 
-	public void setAllergy(String allergy) {
-		this.allergy = allergy;
-	}
+    public String getOrigin() {
+        return origin;
+    }
 
-	public Integer getAge() {
-		return age;
-	}
+    public void setOrigin(String origin) {
+        this.origin = origin;
+    }
 
-	public void setAge(Integer age) {
-		this.age = age;
-	}
+    public String getProfession() {
+        return profession;
+    }
 
-	public String getState() {
-		return state;
-	}
+    public void setProfession(String profession) {
+        this.profession = profession;
+    }
 
-	public void setState(String state) {
-		this.state = state;
-	}
-	
-	
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public Integer getHeight() {
+        return height;
+    }
+
+    public void setHeight(Integer height) {
+        this.height = height;
+    }
+
+    public Integer getWeight() {
+        return weight;
+    }
+
+    public void setWeight(Integer weight) {
+        this.weight = weight;
+    }
+
+    public String getFlood() {
+        return flood;
+    }
+
+    public void setFlood(String flood) {
+        this.flood = flood;
+    }
+
+    public String getMenses() {
+        return menses;
+    }
+
+    public void setMenses(String menses) {
+        this.menses = menses;
+    }
+
+    public String getPerson() {
+        return person;
+    }
+
+    public void setPerson(String person) {
+        this.person = person;
+    }
+
+    public String getBirthis() {
+        return birthis;
+    }
+
+    public void setBirthis(String birthis) {
+        this.birthis = birthis;
+    }
+
+    public String getFamily() {
+        return family;
+    }
+
+    public void setFamily(String family) {
+        this.family = family;
+    }
+
+    public String getAllergy() {
+        return allergy;
+    }
+
+    public void setAllergy(String allergy) {
+        this.allergy = allergy;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
 }

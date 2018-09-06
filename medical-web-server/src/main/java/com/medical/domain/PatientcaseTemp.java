@@ -3,104 +3,104 @@ package com.medical.domain;
 import java.util.Date;
 
 public class PatientcaseTemp {
-private Integer id;
-	
-	private String uuid;
-	
-	private String casename; // 病例名称
-	
-	private String occurancetime; // 发病时间
-	
-	private String maincase; // 主诉
-	
-	private String casehis; // 现病史
-	
-	private String diagnosis; //初步诊断
-	
-	private String suggestion; // 治疗意见
-	
-	private String remark; // 备注
-	
-	private Date createtime; // 病例创建时间
+    private Integer id;
 
-	public Integer getId() {
-		return id;
-	}
+    private String uuid;
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    private String casename; // 病例名称
 
-	public String getUuid() {
-		return uuid;
-	}
+    private String occurancetime; // 发病时间
 
-	public void setUuid(String uuid) {
-		this.uuid = uuid;
-	}
+    private String maincase; // 主诉
 
-	public String getCasename() {
-		return casename;
-	}
+    private String casehis; // 现病史
 
-	public void setCasename(String casename) {
-		this.casename = casename;
-	}
+    private String diagnosis; // 初步诊断
 
-	public String getOccurancetime() {
-		return occurancetime;
-	}
+    private String suggestion; // 治疗意见
 
-	public void setOccurancetime(String occurancetime) {
-		this.occurancetime = occurancetime;
-	}
+    private String remark; // 备注
 
-	public String getMaincase() {
-		return maincase;
-	}
+    private Date createtime; // 病例创建时间
 
-	public void setMaincase(String maincase) {
-		this.maincase = maincase;
-	}
+    public Integer getId() {
+        return id;
+    }
 
-	public String getCasehis() {
-		return casehis;
-	}
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-	public void setCasehis(String casehis) {
-		this.casehis = casehis;
-	}
+    public String getUuid() {
+        return uuid;
+    }
 
-	public String getDiagnosis() {
-		return diagnosis;
-	}
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
+    }
 
-	public void setDiagnosis(String diagnosis) {
-		this.diagnosis = diagnosis;
-	}
+    public String getCasename() {
+        return casename;
+    }
 
-	public String getSuggestion() {
-		return suggestion;
-	}
+    public void setCasename(String casename) {
+        this.casename = casename;
+    }
 
-	public void setSuggestion(String suggestion) {
-		this.suggestion = suggestion;
-	}
+    public String getOccurancetime() {
+        return occurancetime;
+    }
 
-	public String getRemark() {
-		return remark;
-	}
+    public void setOccurancetime(String occurancetime) {
+        this.occurancetime = occurancetime;
+    }
 
-	public void setRemark(String remark) {
-		this.remark = remark;
-	}
+    public String getMaincase() {
+        return maincase;
+    }
 
-	public Date getCreatetime() {
-		return createtime;
-	}
+    public void setMaincase(String maincase) {
+        this.maincase = maincase;
+    }
 
-	public void setCreatetime(Date createtime) {
-		this.createtime = createtime;
-	}
-	
+    public String getCasehis() {
+        return casehis;
+    }
+
+    public void setCasehis(String casehis) {
+        this.casehis = casehis;
+    }
+
+    public String getDiagnosis() {
+        return diagnosis;
+    }
+
+    public void setDiagnosis(String diagnosis) {
+        this.diagnosis = diagnosis;
+    }
+
+    public String getSuggestion() {
+        return suggestion;
+    }
+
+    public void setSuggestion(String suggestion) {
+        this.suggestion = suggestion;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
+
+    public Date getCreatetime() {
+        return createtime;
+    }
+
+    public void setCreatetime(Date createtime) {
+        this.createtime = createtime;
+    }
+
 }

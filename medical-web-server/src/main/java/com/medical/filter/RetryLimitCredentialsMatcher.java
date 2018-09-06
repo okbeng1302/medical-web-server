@@ -9,6 +9,10 @@ import org.apache.shiro.authc.ExcessiveAttemptsException;
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.cache.Cache;
 import org.apache.shiro.cache.ehcache.EhCacheManager;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.medical.dao.UserDao;
+import com.medical.domain.User;
 
 /**
  * @desc 登录限制 5 次
@@ -18,6 +22,9 @@ import org.apache.shiro.cache.ehcache.EhCacheManager;
 public class RetryLimitCredentialsMatcher extends HashedCredentialsMatcher {
     private static final Logger logger = Logger.getLogger(RetryLimitCredentialsMatcher.class);
     // 集群中可能会导致出现验证多过5次的现象，因为AtomicInteger只能保证单节点并发
+
+    @Autowired
+    UserDao userDao;
 
     private EhCacheManager ehcacheManager;
     private int countMax = 5;
@@ -46,12 +53,15 @@ public class RetryLimitCredentialsMatcher extends HashedCredentialsMatcher {
             throw new ExcessiveAttemptsException(
                     "username: " + username + " tried to login more than 5 times in period");
         }
-        boolean matches = super.doCredentialsMatch(token, info);
-        if (matches) {
+        // boolean matches = super.doCredentialsMatch(token, info);
+        User user = userDao.findAdminByName(username);
+        Boolean flag = false;
+        if (user != null) {
             // clear retry data
+            flag = true;
             passwordRetryCache.remove(username);
         }
-        return matches;
+        return flag;
     }
 
 }
